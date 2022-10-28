@@ -3,18 +3,18 @@ package com.example.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.mapper.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.exception.BookingNotFoundException;
 import com.example.persistence.domain.Booking;
 import com.example.persistence.repository.BookingRepository;
 
 @Service
 public class BookingService {
+	@Autowired
 	BookingRepository BookRepo;
 
-	private Mapper mapper;
+	// @Autowired
+	// private ModelMapper mapper;
 
 	public BookingRepository getBookRepo() {
 		return BookRepo;
@@ -24,46 +24,37 @@ public class BookingService {
 		BookRepo = bookRepo;
 	}
 
-	public Mapper getMapper() {
-		return mapper;
+	public Booking createBooking(Booking booking) {
+		return this.BookRepo.save(booking);
 	}
 
-	public void setMapper(Mapper mapper) {
-		this.mapper = mapper;
+	public Optional<Booking> readOneById(Long id) {
+		return this.BookRepo.findById(id);
+
 	}
 
-	public BookingService(BookingRepository bookRepo, Mapper mapper) {
-		super();
-		BookRepo = bookRepo;
-		this.mapper = mapper;
+	public boolean deleteBooking(Long Id) {
+		this.BookRepo.deleteById(Id);
+		return !this.BookRepo.existsById(Id);
 	}
 
-	public BookingService() {
-		super();
-	}
-	public Booking createMusician(Booking Musician) {
-		return this.BookRepo.save(Musician);
-	}
+	public  Booking updateBookingService(Booking booking,Long Id) {
+			Booking existing = this.BookRepo.findById(Id).get();
+			existing.setTime(booking.getTime());
+			existing.setDate(booking.getDate());
+			existing.setTypes(booking.getTypes());
+			existing.setCustomer(booking.getCustomer());
+			existing.setId(booking.getId());
+
+			return this.BookRepo.save(existing);
+		}
 
 	public List<Booking> readAllBooking() {
 		return this.BookRepo.findAll();
 	}
+	/*
+	 * public BookingService(BookingRepository bookRepo, Mapper mapper) { super();
+	 * BookRepo = bookRepo; this.mapper = mapper; }
+	 */
 
-	public Optional<Booking> readOneMusician(Long id) throws BookingNotFoundException
-	{
-		return Optional.ofNullable(this.bookRepo.findById.orElseThrow(()->new BookingNotFoundException())); 
-				
-	}
-
-	public Booking updateMusician(Booking musician, Long id)
-	{
-		Optional<Booking> x=this.bookRepo.findById(id);
-		Booking foundBookings=x.get();
-		foundBooking.setName(Booking,'getName();
-		foundBooking.setString(booking,getStrings();
-		foundBooking.setType(booking,getType();
-		foundBooking.setCustomer(Booking,getCustomer();
-		this.bookRepo.save(Booking);
-		return foundBooking;
-	}
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.example.persistence.domain.Customer;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 	@Query(value = "Select * from Customer where name =?2", nativeQuery = true)
 	List<Customer> findBandByName(String name);

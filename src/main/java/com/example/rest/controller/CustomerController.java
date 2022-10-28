@@ -12,43 +12,46 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.persistence.domain.Customer;
 import com.example.service.CustomerService;
 
-@RestController
+@RestController 
+@RequestMapping("/Customer")
 public class CustomerController {
 	@Autowired
 	CustomerService serviceCustomer;
 	
-	@PostMapping("/createBand")
-	public ResponseEntity<Customer> create(@RequestBody Customer Band) {
-		return new ResponseEntity<>(this.serviceCustomer.createCustomer(Customer), HttpStatus.CREATED);
+	@PostMapping("/create")
+	public ResponseEntity<Customer> create(@RequestBody Customer customer) {
+		return new ResponseEntity<>(this.serviceCustomer.createCustomer(customer), HttpStatus.CREATED);
 	}
-	@GetMapping("/readAllBand/")
+	@GetMapping("/readAll")
 	public ResponseEntity<List<Customer>> read() {
-		return ResponseEntity.ok(this.serviceCustomer.readAllBand());
+		return ResponseEntity.ok(this.serviceCustomer.readAllCustomer());
 }
-     @GetMapping("/readOneCustomer/{id}")
+     @GetMapping("/readOne/{id}")
 	 public ResponseEntity<Optional<Customer>> readId(@PathVariable Long id) {
-		return ResponseEntity.ok(this.serviceCustomer.readOneCustomer(id));
+		return ResponseEntity.ok(this.serviceCustomer.readById(id)); }
 		
-	 @PutMapping("/updateCustomer/{id}")
-		public ResponseEntity<Customer> update(@RequestBody Customer Customer, @PathVariable Long id) {
-			return new ResponseEntity<>(this.serviceCustomer.updateCustomer(Customer, id), HttpStatus.ACCEPTED);
+	 @PutMapping("/update/{id}")
+		public ResponseEntity<Customer> update(@RequestBody Customer customer, @PathVariable Long id) {
+			return new ResponseEntity<>(this.serviceCustomer.updateCustomer(customer, id), HttpStatus.ACCEPTED);
      }
-	 @DeleteMapping("/delete/Customer/{id}")
-		public ResponseEntity<?> delete(@PathVariable Long id) {
-			return ResponseEntity.ok(this.serviceCustomer.deleteBand(id));
+	 @DeleteMapping("/delete/{id}")
+		public boolean delete(@PathVariable Long id) {
+			return this.serviceCustomer.deleteCustomer(id);
      }
-	 @GetMapping("/findCustomerByName/{name}")
+	 
+	/* @GetMapping("/findCustomerByName/{name}")
 		public ResponseEntity<List<Customer>> readCustomerByName(@PathVariable String name) {
 			return ResponseEntity.ok(this.serviceCustomer.readCustomerByName(name, name));
 	}
-	@GetMapping("/findCustomerByBooking/{}")
-		public ResponseEntity<List<Customer>> reaCustomerByString(@PathVariable String Musician) {
+	@GetMapping("/findCustomerByBooking/{Booking}")
+		public ResponseEntity<List<Customer>> reaCustomerByString(@PathVariable String Booking) {
+			
 			return ResponseEntity.ok(this.serviceCustomer.readCustomerByBookings(Booking));
+		}*/
 		}
-		
-	}

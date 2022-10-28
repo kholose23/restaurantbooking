@@ -1,4 +1,4 @@
-package com.example.mock;
+package com.example.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -28,7 +28,6 @@ import com.example.persistence.domain.Customer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(scripts = "classpath:person-data.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
@@ -39,11 +38,11 @@ public class RestaurantBooking {
 	@Autowired
 	private ObjectMapper mapper;
 
-/*	private final Customer TEST_Customer = new Customer("kholose2000@gmamail,78549687497,Matla23,Matl12,"Edith");
+    private final Customer TEST_Customer = new Customer();
 
-	private final Customer TEST_SAVED_Booking = new Customer(customer id,String,);
+	private final Customer TEST_SAVED_Booking = new Customer();
 
-	@Test
+	/*@Test
 	public void testCreate() throws JsonProcessingException, Exception {
 		String resultString = this.mockMVC
 				.perform(post("/person/create").contentType(MediaType.APPLICATION_JSON)

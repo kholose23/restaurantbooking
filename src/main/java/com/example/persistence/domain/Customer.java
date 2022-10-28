@@ -9,9 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -24,22 +21,21 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
-	@Size(min = 0, max = 70)
+	
+	
 	private String name;
 	
-	@NotNull
-	@Size(min = 0, max = 70)
+	
+	
 	private String Email;
 	
-	@NotNull
-	@Size(min = 0, max = 30)
+
 	private Long Phone;
 	
-	@Size(min = 0, max = 30)
+	
 	private String Username;
 	
-	@Size(min = 10, max = 40)
+	
 	private String Password;
 	//@JsonManagedReference
     @JsonIgnore
@@ -95,9 +91,8 @@ public class Customer {
 		Password = password;
 	}
 
-	public Customer(Long id, @NotNull @Size(min = 0, max = 70) String name,
-		@NotNull @Size(min = 0, max = 70) String email, @NotNull @Size(min = 0, max = 30) Long phone,
-		@Size(min = 0, max = 30) String username, @Size(min = 10, max = 40) String password) {
+	public Customer(Long id, String name, String email, Long phone, String username, String password,
+			List<Booking> booking) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -105,9 +100,18 @@ public class Customer {
 		Phone = phone;
 		Username = username;
 		Password = password;
+		this.booking = booking;
+	}
+
+	public Customer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
 	}
 
 		
 	
 
-}
+

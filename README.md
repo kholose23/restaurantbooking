@@ -32,7 +32,7 @@ Below is the CRUD Functionalities
 ![postman output1](https://user-images.githubusercontent.com/112514094/198724312-ed573d48-2c60-44fd-bffd-1c98c43197a1.png)
 
 Below are the images from MYSQL Database
-
+Below is the Customer Table
 Bel![customer table](https://user-images.githubusercontent.com/112514094/198724863-3c72bacb-0544-4ff4-ad80-666d9e2403ed.png)
 
 Below is the Booking Table.

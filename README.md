@@ -35,6 +35,8 @@ Below are the images from MYSQL Database
 
 Bel![customer table](https://user-images.githubusercontent.com/112514094/198724863-3c72bacb-0544-4ff4-ad80-666d9e2403ed.png)
 
+Below is the Booking Table.
+
 ![Booking table](https://user-images.githubusercontent.com/112514094/198724825-763b27ae-8275-4279-960f-4d788426d186.png)
 Executing on Spring Boot:
 Since this is a Spring Boot application it uses a TomCat server and relevant dependencies.

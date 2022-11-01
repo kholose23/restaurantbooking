@@ -49,9 +49,17 @@ Below is the ERD Diagram for the Database Tables
 
 ### Below is the CRUD Functionalities from Postman API
 
+#### This shows the create test functionality
+
+<img src="https://user-images.githubusercontent.com/112514094/199137270-09ed8daf-5b0f-4d93-8c21-9d63cf24b220.JPG" width="200" height="200">
+
 #### This shows the read test functionality
 
 <img src="https://user-images.githubusercontent.com/112514094/198724312-ed573d48-2c60-44fd-bffd-1c98c43197a1.png" width="200" height="200">
+
+#### This shows the update test functionality
+
+<img src="https://user-images.githubusercontent.com/112514094/199135767-7b381618-fd6b-4fa9-9dda-95e5f906e90f.JPG" width="200" height="200">
 
 #### This shows the delete test functionality
 
